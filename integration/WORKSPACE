@@ -1,16 +1,8 @@
 workspace(name = "bazel_bats_integration")
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-BAZEL_BATS_VERSION = "0.29.1"
-
-http_archive(
-    name = "bazel_bats",
-    sha256 = "94aea504205cee5f00d9182975a95a5dadf1747fecb75f7d93e09cccc1c19803",
-    strip_prefix = "bazel-bats-%s" % BAZEL_BATS_VERSION,
-    urls = [
-        "https://github.com/filmil/bazel-bats/archive/refs/tags/v%s.tar.gz" % BAZEL_BATS_VERSION,
-    ],
+local_repository(
+  name = "bazel_bats",
+  path = "../",
 )
 
 load("@bazel_bats//:deps.bzl", "bazel_bats_dependencies")
